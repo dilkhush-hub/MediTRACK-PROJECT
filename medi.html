@@ -4,22 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Hospital - Queue Management</title>
+    <title>MediTrack | Hospital Dashboard</title>
     <link rel="stylesheet" href="medi.css">
 </head>
 <body>
 
-    <header class="header">
-        <h1>🏥 Smart Hospital</h1>
-        <p>QR Based Live Queue Management System</p>
-    </header>
+<div class="app-layout">
 
-    <main class="container">
-        <div class="dashboard">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a class="brand" href="#dashboard">
+            <span class="brand-icon">✚</span>
+            <span>MediTrack<small>HOSPITAL CARE</small></span>
+        </a>
 
-            <!-- 1. BOOK YOUR QUEUE -->
-            <section class="card">
-                <h2>📋 Book Your Queue</h2>
+        <p class="nav-heading">MAIN MENU</p>
+
+        <nav class="side-nav">
+            <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+            <a class="nav-link" href="#booking">＋ Book Appointment</a>
+            <a class="nav-link" href="#live-queue">◷ Live Queue</a>
+            <a class="nav-link" href="#medicines">♡ Medicine Tracker</a>
+            <a class="nav-link" href="#qr-booking">▦ QR Booking</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-icon">?</div>
+            <strong>Need help?</strong>
+            <p>Manage your hospital queue with ease.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">HOSPITAL MANAGEMENT</p>
+                <h1>Dashboard Overview</h1>
+                <p class="subtitle">Welcome to your MediTrack workspace.</p>
+            </div>
+            <div class="profile">
+                <div class="profile-icon">D</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Hospital Staff</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-grid">
+            <article class="summary-card">
+                <div class="summary-icon blue">♙</div>
+                <p>Patients Waiting</p>
+                <h2 id="waitingCount">0</h2>
+                <small>Current queue</small>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon purple">▦</div>
+                <p>Next Token</p>
+                <h2 id="nextToken">---</h2>
+                <small>Up next</small>
+            </article>
+
+            <article class="summary-card">
+                <div class="summary-icon green">◷</div>
+                <p>Estimated Wait</p>
+                <h2 id="waitingTime">0 minutes</h2>
+                <small>Approximate waiting time</small>
+            </article>
+        </section>
+
+        <!-- BOOKING AND QUEUE -->
+        <div class="dashboard-grid">
+
+            <section class="card" id="booking">
+                <div class="section-heading">
+                    <div>
+                        <h2>Book Your Queue</h2>
+                        <p>Enter patient and appointment details.</p>
+                    </div>
+                    <span class="heading-icon">＋</span>
+                </div>
 
                 <form id="queueForm">
                     <label for="patientName">Patient Name</label>
@@ -49,7 +117,7 @@
                         <option>Dr. Mohan</option>
                     </select>
 
-                    <button type="submit">Join Queue</button>
+                    <button type="submit">Join Queue →</button>
                 </form>
 
                 <div class="token-box">
@@ -66,20 +134,13 @@
                 </div>
             </section>
 
-            <!-- 2. LIVE QUEUE DASHBOARD -->
-            <section class="card">
-                <h2>📊 Live Queue Dashboard</h2>
-
-                <div class="queue-stats">
-                    <p>Patients Waiting:
-                        <strong id="waitingCount">0</strong>
-                    </p>
-                    <p>Next Token:
-                        <strong id="nextToken">---</strong>
-                    </p>
-                    <p>Estimated Wait:
-                        <strong id="waitingTime">0 minutes</strong>
-                    </p>
+            <section class="card" id="live-queue">
+                <div class="section-heading">
+                    <div>
+                        <h2>Live Queue</h2>
+                        <p>Monitor patients in the waiting list.</p>
+                    </div>
+                    <span class="live-badge">● LIVE</span>
                 </div>
 
                 <div id="queueList">
@@ -87,13 +148,19 @@
                 </div>
 
                 <button type="button" id="nextButton" disabled>
-                    Next Patient
+                    Next Patient →
                 </button>
             </section>
 
-            <!-- 3. MEDICINE TRACKER -->
-            <section class="card">
-                <h2>💊 Medicine Tracker</h2>
+            <!-- MEDICINE TRACKER -->
+            <section class="card" id="medicines">
+                <div class="section-heading">
+                    <div>
+                        <h2>Medicine Tracker</h2>
+                        <p>Keep track of medicine schedules.</p>
+                    </div>
+                    <span class="heading-icon">＋</span>
+                </div>
 
                 <form id="medicineForm">
                     <label for="medicineName">Medicine Name</label>
@@ -125,23 +192,32 @@
                 <div id="medicineList"></div>
             </section>
 
-            <!-- 4. QR CODE -->
-            <section class="card qr-card">
-                <h2>📱 Scan QR Code</h2>
-                <img id="qrCode" alt="Smart Hospital website QR code">
+            <!-- QR BOOKING -->
+            <section class="card qr-card" id="qr-booking">
+                <div class="section-heading">
+                    <div>
+                        <h2>QR Booking</h2>
+                        <p>Scan to access the hospital website.</p>
+                    </div>
+                    <span class="heading-icon">▦</span>
+                </div>
+
+                <img id="qrCode" alt="MediTrack website QR code">
                 <p id="qrMessage">
                     QR code will appear when the website is hosted.
                 </p>
             </section>
 
         </div>
+
+        <footer class="page-footer">
+            MediTrack · Hospital Queue Management
+            <span>Frontend Demo Project</span>
+        </footer>
+
     </main>
+</div>
 
-    <footer>
-        <p>Smart Hospital Management System</p>
-        <p>Built with HTML, CSS and JavaScript</p>
-    </footer>
-
-    <script src="medi.js"></script>
+<script src="medi.js"></script>
 </body>
 </html>
