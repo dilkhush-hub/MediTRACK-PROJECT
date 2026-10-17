@@ -1,0 +1,198 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #263247;
+    background: #f3f6fb;
+}
+
+.header {
+    background: #2800ed;
+    color: white;
+    text-align: center;
+    padding: 13px 10px;
+}
+
+.header h1 {
+    margin: 0 0 5px;
+    font-size: 19px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 10px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.card {
+    min-width: 0;
+    padding: 17px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(20, 40, 80, 0.08);
+}
+
+.card h2 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #1768f8;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #d8dfeb;
+    border-radius: 5px;
+    background: white;
+    font: inherit;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #c3d7ff;
+    border-color: #1768f8;
+}
+
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #1768f8;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    background: #0752d8;
+}
+
+button:disabled {
+    background: #aab5c5;
+    cursor: not-allowed;
+}
+
+.token-box,
+.queue-stats {
+    margin-top: 14px;
+    padding: 13px 10px;
+    background: #edf5ff;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.token-number {
+    margin: 5px 0;
+    color: #1768f8;
+    font-size: 31px;
+    font-weight: bold;
+}
+
+#tokenDetails {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.status {
+    color: #09934a;
+    font-weight: bold;
+}
+
+.queue-stats {
+    text-align: left;
+}
+
+.queue-stats p {
+    margin: 6px 0;
+}
+
+.queue-item,
+.medicine-item {
+    margin-top: 9px;
+    padding: 10px;
+    background: #f3f6fb;
+    border-radius: 6px;
+    overflow-wrap: anywhere;
+}
+
+.queue-item strong,
+.medicine-item strong {
+    color: #1768f8;
+}
+
+.queue-item p,
+.medicine-item p {
+    line-height: 1.5;
+}
+
+.empty {
+    padding: 12px 0;
+    color: #718096;
+    text-align: center;
+}
+
+.qr-card {
+    text-align: center;
+}
+
+#qrCode {
+    display: block;
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+    margin: 12px auto;
+    object-fit: contain;
+}
+
+#qrMessage {
+    color: #64748b;
+    line-height: 1.5;
+}
+
+footer {
+    padding: 18px;
+    text-align: center;
+    color: #718096;
+}
+
+@media (max-width: 520px) {
+    .container {
+        padding: 12px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}

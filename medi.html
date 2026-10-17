@@ -4,174 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meditrack | Hospital Dashboard</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f6fc;
-            color: #24344d;
-        }
-
-        header {
-            background: #087f8c;
-            color: white;
-            padding: 24px 35px;
-        }
-
-        header h1 {
-            margin: 0 0 8px;
-        }
-
-        nav {
-            background: white;
-            padding: 16px 35px;
-            box-shadow: 0 2px 8px #00000010;
-        }
-
-        nav a {
-            color: #087f8c;
-            text-decoration: none;
-            margin-right: 25px;
-            font-weight: bold;
-        }
-
-        main {
-            padding: 30px;
-        }
-
-        .cards {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            flex: 1;
-            min-width: 170px;
-            box-shadow: 0 3px 12px #0000000b;
-        }
-
-        .card h3 {
-            color: #64748b;
-            margin-top: 0;
-        }
-
-        .number {
-            font-size: 32px;
-            font-weight: bold;
-            color: #087f8c;
-        }
-
-        section {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            margin-top: 25px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 14px 10px;
-            border-bottom: 1px solid #e5eaf1;
-        }
-
-        th {
-            color: #087f8c;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #64748b;
-        }
-    </style>
+    <title>Smart Hospital - Queue Management</title>
+    <link rel="stylesheet" href="medi.css">
 </head>
-
 <body>
 
-    <header>
-        <h1>Meditrack 🏥</h1>
-        <p>Hospital Management System</p>
+    <header class="header">
+        <h1>🏥 Smart Hospital</h1>
+        <p>QR Based Live Queue Management System</p>
     </header>
 
-    <nav>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#patients">Patients</a>
-        <a href="#appointments">Appointments</a>
-    </nav>
+    <main class="container">
+        <div class="dashboard">
 
-    <main>
-        <h2 id="dashboard">Dashboard Overview</h2>
-        <p>Welcome to your hospital management dashboard.</p>
+            <!-- 1. BOOK YOUR QUEUE -->
+            <section class="card">
+                <h2>📋 Book Your Queue</h2>
 
-        <div class="cards">
-            <div class="card">
-                <h3>Total Patients</h3>
-                <div class="number">120</div>
-            </div>
+                <form id="queueForm">
+                    <label for="patientName">Patient Name</label>
+                    <input type="text" id="patientName"
+                           placeholder="Enter patient name"
+                           maxlength="60" required>
 
-            <div class="card">
-                <h3>Doctors</h3>
-                <div class="number">18</div>
-            </div>
+                    <label for="department">Department</label>
+                    <select id="department">
+                        <option>Dental</option>
+                        <option>Cardiology</option>
+                        <option>General Medicine</option>
+                        <option>Orthopedics</option>
+                        <option>Dermatology</option>
+                        <option>Pediatrics</option>
+                    </select>
 
-            <div class="card">
-                <h3>Appointments</h3>
-                <div class="number">32</div>
-            </div>
+                    <label for="doctor">Doctor</label>
+                    <select id="doctor">
+                        <option>Dr. Sarthak</option>
+                        <option>Dr. Sharma</option>
+                        <option>Dr. Patel</option>
+                        <option>Dr. Mehta</option>
+                        <option>Dr. Suman</option>
+                        <option>Dr. Suresh</option>
+                        <option>Dr. Pawan</option>
+                        <option>Dr. Mohan</option>
+                    </select>
+
+                    <button type="submit">Join Queue</button>
+                </form>
+
+                <div class="token-box">
+                    <h3>Your Token</h3>
+                    <p id="tokenNumber" class="token-number">A-001</p>
+                    <div id="tokenDetails">
+                        Your booking details will appear here.
+                    </div>
+                    <p id="queueStatus" class="status">● Queue is Live</p>
+                    <button type="button" id="cancelButton"
+                            class="cancel-button" disabled>
+                        Cancel Queue
+                    </button>
+                </div>
+            </section>
+
+            <!-- 2. LIVE QUEUE DASHBOARD -->
+            <section class="card">
+                <h2>📊 Live Queue Dashboard</h2>
+
+                <div class="queue-stats">
+                    <p>Patients Waiting:
+                        <strong id="waitingCount">0</strong>
+                    </p>
+                    <p>Next Token:
+                        <strong id="nextToken">---</strong>
+                    </p>
+                    <p>Estimated Wait:
+                        <strong id="waitingTime">0 minutes</strong>
+                    </p>
+                </div>
+
+                <div id="queueList">
+                    <p class="empty">No patients in queue.</p>
+                </div>
+
+                <button type="button" id="nextButton" disabled>
+                    Next Patient
+                </button>
+            </section>
+
+            <!-- 3. MEDICINE TRACKER -->
+            <section class="card">
+                <h2>💊 Medicine Tracker</h2>
+
+                <form id="medicineForm">
+                    <label for="medicineName">Medicine Name</label>
+                    <input type="text" id="medicineName"
+                           placeholder="Enter medicine name"
+                           maxlength="80" required>
+
+                    <label for="dosage">Dosage</label>
+                    <input type="text" id="dosage"
+                           placeholder="e.g. 1 tablet"
+                           maxlength="40" required>
+
+                    <label for="timing">Timing</label>
+                    <select id="timing">
+                        <option>Morning</option>
+                        <option>Afternoon</option>
+                        <option>Evening</option>
+                        <option>Night</option>
+                    </select>
+
+                    <label for="duration">Duration</label>
+                    <input type="text" id="duration"
+                           placeholder="e.g. 5 days"
+                           maxlength="40" required>
+
+                    <button type="submit">+ Add Medicine</button>
+                </form>
+
+                <div id="medicineList"></div>
+            </section>
+
+            <!-- 4. QR CODE -->
+            <section class="card qr-card">
+                <h2>📱 Scan QR Code</h2>
+                <img id="qrCode" alt="Smart Hospital website QR code">
+                <p id="qrMessage">
+                    QR code will appear when the website is hosted.
+                </p>
+            </section>
+
         </div>
-
-        <section id="patients">
-            <h2>Recent Patients</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Patient Name</th>
-                        <th>Department</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Rahul Sharma</td>
-                        <td>Cardiology</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Priya Patel</td>
-                        <td>General Medicine</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Amit Verma</td>
-                        <td>Orthopedics</td>
-                        <td>Review</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="appointments">
-            <h2>Appointments</h2>
-            <p>You can manage hospital appointments here.</p>
-        </section>
     </main>
 
     <footer>
-        Meditrack Hospital Management System
+        <p>Smart Hospital Management System</p>
+        <p>Built with HTML, CSS and JavaScript</p>
     </footer>
 
+    <script src="medi.js"></script>
 </body>
 </html>
