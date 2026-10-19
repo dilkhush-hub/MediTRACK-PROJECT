@@ -42,7 +42,6 @@ body {
     line-height: 1.6;
 }
 
-
 button,
 input,
 select,
@@ -831,42 +830,60 @@ button:disabled {
     }
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+/* Patient details in Live Queue */
+.queue-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #e1e7f2;
+    border-radius: 12px;
+    background: #ffffff;
+    overflow-wrap: anywhere;
 }
 
-.form-group label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #34415e;
+.queue-item strong {
+    color: #263653;
+    font-size: 15px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid #dce3f0;
-  border-radius: 12px;
-  background: #fff;
-  color: #263653;
-  font: inherit;
-  outline: none;
+.queue-patient-details,
+.queue-health-details,
+.queue-address,
+.queue-wait {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #5363ed;
-  box-shadow: 0 0 0 3px #5363ed20;
+.queue-health-details {
+    color: #34415e;
+    font-weight: 500;
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 70px;
+.queue-address {
+    overflow-wrap: anywhere;
+}
+
+.queue-wait {
+    color: #5363ed;
+    font-weight: 600;
+}
+
+/* Phone screen */
+@media (max-width: 600px) {
+    .queue-item {
+        padding: 14px;
+        gap: 8px;
+    }
+
+    .queue-patient-details,
+    .queue-health-details,
+    .queue-address,
+    .queue-wait {
+        font-size: 12px;
+    }
 }
 

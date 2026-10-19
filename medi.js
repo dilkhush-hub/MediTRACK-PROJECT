@@ -38,25 +38,45 @@ function renderQueue() {
     }
 
     waiting.forEach((patient, index) => {
-        const item = document.createElement("div");
-        item.className = "queue-item";
+    const item = document.createElement("div");
+    item.className = "queue-item";
 
-        const title = document.createElement("strong");
-        title.textContent = patient.token + " - " + patient.name;
+    // Patient name and token
+    const title = document.createElement("strong");
+    title.textContent = patient.token + " - " + patient.name;
 
-        const details = document.createElement("p");
-        details.textContent =
-            patient.department + " | " + patient.doctor;
+    // Department and doctor
+    const details = document.createElement("p");
+    details.className = "queue-patient-details";
+    details.textContent =
+        (patient.department || "N/A") + " | " +
+        (patient.doctor || "N/A");
 
-        const wait = document.createElement("p");
-        wait.textContent =
-            "Estimated wait: " + index * 10 + " minutes";
+    // Age, gender and weight
+    const healthDetails = document.createElement("p");
+    healthDetails.className = "queue-health-details";
+    healthDetails.textContent =
+        "Age: " + (patient.age || "N/A") +
+        " | Gender: " + (patient.gender || "N/A") +
+        " | Weight: " +
+        (patient.weight ? patient.weight + " kg" : "N/A");
 
-        item.append(title, details, wait);
-        queueList.appendChild(item);
-    });
+    // Patient address
+    const address = document.createElement("p");
+    address.className = "queue-address";
+    address.textContent =
+        "Address: " + (patient.address || "N/A");
+
+    // Estimated waiting time
+    const wait = document.createElement("p");
+    wait.className = "queue-wait";
+    wait.textContent =
+        "Estimated wait: " + index * 10 + " minutes";
+
+    item.append(title, details, healthDetails, address, wait);
+    queueList.appendChild(item);
+});
 }
-
 // Join queue
 queueForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -66,13 +86,23 @@ queueForm.addEventListener("submit", function(event) {
 
     if (!name) return;
 
-    const patient = {
-        name,
-        token: "A-" + String(tokenCounter).padStart(3, "0"),
-        department: document.getElementById("department").value,
-        doctor: document.getElementById("doctor").value,
-        status: "Waiting"
-    };
+    
+const patient = {
+    name,
+    token: "A-" + String(tokenCounter).padStart(3, "0"),
+
+    // Patient ki extra details
+    age: document.getElementById("age").value,
+    gender: document.getElementById("gender").value,
+    weight: document.getElementById("weight").value,
+    address: document.getElementById("address").value.trim(),
+
+    // Appointment details
+    department: document.getElementById("department").value,
+    doctor: document.getElementById("doctor").value,
+    status: "Waiting"
+};
+
 
     tokenCounter++;
     patients.push(patient);
