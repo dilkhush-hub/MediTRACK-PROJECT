@@ -108,6 +108,7 @@ cancelButton.addEventListener("click", function() {
 });
 
 // Next patient
+
 nextButton.addEventListener("click", function() {
     const patient = patients.find(
         item => item.status === "Waiting"
@@ -115,6 +116,7 @@ nextButton.addEventListener("click", function() {
 
     if (!patient) return;
 
+    // Current patient ko complete karo
     patient.status = "Completed";
 
     if (patient.token === myToken) {
@@ -122,8 +124,10 @@ nextButton.addEventListener("click", function() {
         cancelButton.disabled = true;
     }
 
+    // Queue ko dobara render karo
     renderQueue();
 });
+
 
 // Medicine tracker
 const medicineForm = document.getElementById("medicineForm");
