@@ -3,6 +3,8 @@ const patients = [];
 let tokenCounter = 1;
 let myToken = null;
 
+const myPeopleAhead = document.getElementById("myPeopleAhead");
+const myWaitingTime = document.getElementById("myWaitingTime");
 const queueForm = document.getElementById("queueForm");
 const queueList = document.getElementById("queueList");
 const waitingCount = document.getElementById("waitingCount");
@@ -28,7 +30,23 @@ function renderQueue() {
 
     waitingTime.textContent = waiting.length * 10 + " min";
     nextButton.disabled = waiting.length === 0;
+    const myPatient = patients.find(
+    patient => patient.token === myToken
+);
 
+if (myPatient) {
+    const myPosition = waiting.findIndex(
+        patient => patient.token === myToken
+    );
+
+    const peopleAhead = myPosition >= 0 ? myPosition : 0;
+    const estimatedWait = peopleAhead * 10;
+
+    document.getElementById("myPeopleAhead").textContent = peopleAhead;
+    document.getElementById("myWaitingTime").textContent = estimatedWait + " min";
+}
+    
+    
     if (waiting.length === 0) {
         const message = document.createElement("p");
         message.className = "empty";
