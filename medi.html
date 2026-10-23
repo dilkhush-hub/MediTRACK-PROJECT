@@ -145,18 +145,43 @@
                     <button type="submit">Join Queue →</button>
                 </form>
 
-                <div class="token-box">
-                    <h3>Your Token</h3>
-                    <p id="tokenNumber" class="token-number">A-001</p>
-                    <div id="tokenDetails">
-                        Your booking details will appear here.
-                    </div>
-                    <p id="queueStatus" class="status">● Queue is Live</p>
-                    <button type="button" id="cancelButton"
-                            class="cancel-button" disabled>
-                        Cancel Queue
-                    </button>
-                </div>
+                
+<div class="token-box">
+    <div class="token-card-heading">
+        <div>
+            <p class="token-label">YOUR APPOINTMENT TOKEN</p>
+            <h3>Your Token</h3>
+        </div>
+        <span class="token-icon">✓</span>
+    </div>
+
+    <p id="tokenNumber" class="token-number">---</p>
+
+    <div id="tokenDetails" class="token-details">
+        Your booking details will appear here.
+    </div>
+
+    <div class="token-wait-grid">
+        <div class="token-wait-item">
+            <span>People Ahead</span>
+            <strong id="myPeopleAhead">--</strong>
+        </div>
+        <div class="token-wait-item">
+            <span>Estimated Wait</span>
+            <strong id="myWaitingTime">-- min</strong>
+        </div>
+    </div>
+
+    <p id="queueStatus" class="status">
+        ● Waiting for booking
+    </p>
+
+    <button type="button" id="cancelButton"
+            class="cancel-button" disabled>
+        Cancel Queue
+    </button>
+</div>
+
             </section>
 
             <section class="card" id="live-queue">
