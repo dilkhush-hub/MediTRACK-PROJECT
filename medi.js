@@ -136,8 +136,14 @@ const patient = {
     cancelButton.disabled = false;
 
     queueForm.reset();
+   
     // DOCTOR DIRECTORY
 
+
+ // Doctor Directory complete
+
+    renderQueue();
+});
 const doctors = [
     {
         name: "Dr. Sarthak",
@@ -197,11 +203,6 @@ doctors.forEach(function(doctor) {
     `;
 
     doctorList.appendChild(card);
-});
-
- // Doctor Directory complete
-
-    renderQueue();
 });
 
 // Cancel queue
