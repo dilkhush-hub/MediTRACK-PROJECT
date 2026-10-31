@@ -136,6 +136,71 @@ const patient = {
     cancelButton.disabled = false;
 
     queueForm.reset();
+    // DOCTOR DIRECTORY
+
+const doctors = [
+    {
+        name: "Dr. Sarthak",
+        department: "General Medicine",
+        time: "09:00 AM - 02:00 PM"
+    },
+    {
+        name: "Dr. Sharma",
+        department: "Cardiology",
+        time: "10:00 AM - 04:00 PM"
+    },
+    {
+        name: "Dr. Patel",
+        department: "Dental",
+        time: "09:00 AM - 01:00 PM"
+    },
+    {
+        name: "Dr. Mehta",
+        department: "Orthopedics",
+        time: "11:00 AM - 05:00 PM"
+    },
+    {
+        name: "Dr. Suman",
+        department: "Pediatrics",
+        time: "09:00 AM - 03:00 PM"
+    },
+    {
+        name: "Dr. Suresh",
+        department: "Dermatology",
+        time: "10:00 AM - 02:00 PM"
+    },
+    {
+        name: "Dr. Pawan",
+        department: "General Medicine",
+        time: "02:00 PM - 07:00 PM"
+    },
+    {
+        name: "Dr. Mohan",
+        department: "Cardiology",
+        time: "03:00 PM - 08:00 PM"
+    }
+];
+
+const doctorList = document.getElementById("doctorList");
+
+doctors.forEach(function(doctor) {
+
+    const card = document.createElement("div");
+    card.className = "doctor-card";
+
+    card.innerHTML = `
+        <div class="doctor-avatar">👨‍⚕️</div>
+        <h3>${doctor.name}</h3>
+        <p><strong>Department:</strong> ${doctor.department}</p>
+        <p><strong>Available:</strong> ${doctor.time}</p>
+        <span class="doctor-available">● Available</span>
+    `;
+
+    doctorList.appendChild(card);
+});
+
+ // Doctor Directory complete
+
     renderQueue();
 });
 

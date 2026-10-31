@@ -886,4 +886,62 @@ button:disabled {
         font-size: 12px;
     }
 }
+/* DOCTOR DIRECTORY */
+
+.doctor-directory {
+    margin-bottom: 24px;
+}
+
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.doctor-card {
+    background: #f8faff;
+    border: 1px solid #e5eaf2;
+    border-radius: 14px;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.doctor-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #e4edff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 14px;
+}
+
+.doctor-card h3 {
+    margin: 0 0 7px;
+    color: #172554;
+}
+
+.doctor-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.doctor-available {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+}
 
