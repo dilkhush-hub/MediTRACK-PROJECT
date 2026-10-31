@@ -40,7 +40,7 @@ if (myPatient) {
     );
 
     const peopleAhead = myPosition >= 0 ? myPosition : 0;
-    const estimatedWait = peopleAhead * 10;
+    const estimatedWait = peopleAhead === 0 ? 1 : peopleAhead * 10;
 
     document.getElementById("myPeopleAhead").textContent = peopleAhead;
     document.getElementById("myWaitingTime").textContent = estimatedWait + " min";
@@ -89,7 +89,8 @@ if (myPatient) {
     const wait = document.createElement("p");
     wait.className = "queue-wait";
     wait.textContent =
-        "Estimated wait: " + index * 10 + " minutes";
+    "Estimated wait: " +
+(index === 0 ? 5 : index * 10) + " minutes";
 
     item.append(title, details, healthDetails, address, wait);
     queueList.appendChild(item);
