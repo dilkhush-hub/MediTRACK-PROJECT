@@ -124,6 +124,7 @@ const patient = {
 
     tokenCounter++;
     patients.push(patient);
+    updateAppointmentSlip(patient);
     myToken = patient.token;
 
     tokenNumber.textContent = patient.token;
@@ -220,6 +221,39 @@ cancelButton.addEventListener("click", function() {
 
     renderQueue();
 });
+
+// APPOINTMENT SLIP
+
+const printSlip = document.getElementById("printSlip");
+
+printSlip.addEventListener("click", function() {
+    window.print();
+});
+
+// Update appointment slip after booking
+function updateAppointmentSlip(patient) {
+    document.getElementById("slipToken").textContent =
+        patient.token;
+
+    document.getElementById("slipPatient").textContent =
+        patient.name;
+
+    document.getElementById("slipAge").textContent =
+        patient.age;
+
+    document.getElementById("slipGender").textContent =
+        patient.gender;
+
+    document.getElementById("slipWeight").textContent =
+        patient.weight + " kg";
+
+    document.getElementById("slipDepartment").textContent =
+        patient.department;
+
+    document.getElementById("slipDoctor").textContent =
+        patient.doctor;
+}
+
 
 // Next patient
 

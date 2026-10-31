@@ -945,3 +945,131 @@ button:disabled {
     font-size: 12px;
 }
 
+/* APPOINTMENT SLIP */
+
+.appointment-slip {
+    margin-bottom: 24px;
+}
+
+.slip-content {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #dbe4f0;
+    border-radius: 14px;
+}
+
+.slip-header {
+    text-align: center;
+    padding-bottom: 18px;
+    border-bottom: 2px dashed #cbd5e1;
+}
+
+.slip-header h2 {
+    color: #1768f8;
+    margin: 0 0 6px;
+}
+
+.slip-header p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.slip-status {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #dcfce7;
+    color: #15803d;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.slip-token {
+    text-align: center;
+    padding: 20px;
+    margin: 18px 0;
+    background: #eff6ff;
+    border-radius: 12px;
+}
+
+.slip-token p {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.slip-token h1 {
+    color: #1768f8;
+    font-size: 36px;
+    margin: 5px;
+}
+
+.slip-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 15px 0;
+}
+
+.slip-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.slip-details span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.slip-details strong {
+    color: #172554;
+    font-size: 14px;
+}
+
+.slip-message {
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 15px;
+}
+
+#printSlip {
+    display: block;
+    margin: 15px auto;
+    padding: 12px 22px;
+    background: #1768f8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #appointmentSlip,
+    #appointmentSlip .slip-content,
+    #appointmentSlip .slip-content * {
+        visibility: visible;
+    }
+
+    #appointmentSlip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+
+    #printSlip {
+        display: none;
+    }
+}
+
+
