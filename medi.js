@@ -162,6 +162,7 @@ const patient = {
     queueForm.reset();
    
     // DOCTOR DIRECTORY
+    
 
 
  // Doctor Directory complete
