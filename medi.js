@@ -1,7 +1,12 @@
+const patients = JSON.parse(
+    localStorage.getItem("meditrackPatients")
+) || [];
 
-const patients = [];
-let tokenCounter = 1;
-let myToken = null;
+let tokenCounter = Number(
+    localStorage.getItem("meditrackTokenCounter")
+) || 1;
+
+let myToken = localStorage.getItem("meditrackMyToken") || null;
 
 const myPeopleAhead = document.getElementById("myPeopleAhead");
 const myWaitingTime = document.getElementById("myWaitingTime");
@@ -15,6 +20,22 @@ const tokenDetails = document.getElementById("tokenDetails");
 const queueStatus = document.getElementById("queueStatus");
 const cancelButton = document.getElementById("cancelButton");
 const nextButton = document.getElementById("nextButton");
+function saveQueueData() {
+    localStorage.setItem(
+        "meditrackPatients",
+        JSON.stringify(patients)
+    );
+
+    localStorage.setItem(
+        "meditrackTokenCounter",
+        tokenCounter
+    );
+
+    localStorage.setItem(
+        "meditrackMyToken",
+        myToken || ""
+    );
+}
 
 // Update queue dashboard
 function renderQueue() {
