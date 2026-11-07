@@ -127,6 +127,7 @@ const patient = {
     patients.push(patient);
     updateAppointmentSlip(patient);
     myToken = patient.token;
+    saveQueueData();
 
     tokenNumber.textContent = patient.token;
     tokenDetails.textContent =
@@ -217,6 +218,7 @@ cancelButton.addEventListener("click", function() {
     if (!patient) return;
 
     patient.status = "Cancelled";
+    saveQueueData();
     queueStatus.textContent = "Queue booking cancelled.";
     cancelButton.disabled = true;
 
@@ -267,6 +269,7 @@ nextButton.addEventListener("click", function() {
 
     // Current patient ko complete karo
     patient.status = "Completed";
+    saveQueueData();
 
     if (patient.token === myToken) {
         queueStatus.textContent = "Your turn is completed.";
