@@ -9,6 +9,43 @@
 </head>
 <body>
 
+<!-- MediTrack Login System -->
+<section id="loginSection" class="login-section">
+    <div class="login-card">
+        <h1>🏥 MediTrack</h1>
+        <p>Hospital Management System</p>
+
+        <form id="loginForm">
+            <label>Email or Mobile Number</label>
+            <input
+                type="text"
+                id="loginIdentity"
+                placeholder="Enter email or mobile number"
+                required
+            >
+
+            <label>Password</label>
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password"
+                minlength="6"
+                required
+            >
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p id="loginMessage"></p>
+    </div>
+</section>
+
+<div id="mainDashboard" style="display: none;">
+
+<div class="logout-area">
+    <button id="logoutButton">🚪 Logout</button>
+</div>
+
 <div class="app-layout">
 
     <!-- SIDEBAR -->
@@ -24,6 +61,7 @@
             <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
             <a class="nav-link" href="#booking">＋ Book Appointment</a>
             <a class="nav-link" href="#doctors">♙ Doctor Directory</a>
+            <a class="nav-link" href="#hospital-3d">◇ 3D Hospital</a>
             <a class="nav-link" href="#live-queue">◷ Live Queue</a>
             <a class="nav-link" href="#medicines">♡ Medicine Tracker</a>
             <a class="nav-link" href="#qr-booking">▦ QR Booking</a>
@@ -97,6 +135,27 @@
         </section>
 
         
+
+        <!-- THREE.JS INTERACTIVE HOSPITAL -->
+        <section class="card threejs-hospital" id="hospital-3d">
+            <div class="section-heading">
+                <div>
+                    <h2>3D Interactive Hospital</h2>
+                    <p>Explore the MediTrack hospital model. Drag to rotate and scroll to zoom.</p>
+                </div>
+                <span class="heading-icon">◇</span>
+            </div>
+            <div class="hospital-3d-stage">
+                <canvas id="hospital3DCanvas" aria-label="Interactive three-dimensional MediTrack hospital model"></canvas>
+                <div class="threejs-hint">🖱️ Drag to rotate · Scroll to zoom</div>
+            </div>
+            <div class="threejs-controls">
+                <button type="button" id="hospital3DReset">Reset view</button>
+                <button type="button" id="hospital3DRotate" aria-pressed="true">Pause rotation</button>
+                <span id="hospital3DStatus" role="status">3D model loading…</span>
+            </div>
+        </section>
+
 <!-- APPOINTMENT SLIP -->
 <section class="card appointment-slip" id="appointmentSlip">
 
@@ -361,5 +420,7 @@
 </div>
 
 <script src="medi.js"></script>
+<script type="module" src="three-scene.js"></script>
+</div>
 </body>
 </html>

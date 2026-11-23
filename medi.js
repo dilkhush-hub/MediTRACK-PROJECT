@@ -363,3 +363,94 @@ if (location.protocol === "http:" ||
 }
 
 renderQueue();
+
+// MediTrack Login System
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const identity = document.getElementById("loginIdentity").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        const message = document.getElementById("loginMessage");
+
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identity);
+        const isPhone = /^[0-9]{10}$/.test(identity);
+
+        if (!isEmail && !isPhone) {
+            message.textContent = "Enter a valid email or 10-digit mobile number.";
+            return;
+        }
+
+        if (password.length < 6) {
+            message.textContent = "Password must be at least 6 characters.";
+            return;
+        }
+
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("mainDashboard").style.display = "block";
+
+        localStorage.setItem("meditrackLogin", identity);
+
+        const userInfo = document.createElement("div");
+
+        userInfo.id = "loggedInUser";
+        userInfo.textContent = "👤 Logged in as: " + identity;
+
+        userInfo.style.padding = "12px";
+        userInfo.style.marginBottom = "15px";
+        userInfo.style.background = "#e3f2fd";
+        userInfo.style.color = "#0752d8";
+        userInfo.style.borderRadius = "8px";
+        userInfo.style.fontWeight = "bold";
+
+        userInfo.style.display = "flex";
+        userInfo.style.flexDirection = "row";
+        userInfo.style.alignItems = "center";
+        userInfo.style.justifyContent = "space-between";
+        userInfo.style.width = "100%";
+        userInfo.style.boxSizing = "border-box";
+        userInfo.style.gap = "15px";
+
+        const logoutBtn = document.getElementById("logoutButton");
+
+        if (logoutBtn) {
+            userInfo.appendChild(logoutBtn);
+        }
+
+
+// MediTrack Logout System
+
+document.addEventListener("click", function (event) {
+
+    if (event.target.closest("#logoutButton")) {
+
+        localStorage.removeItem("meditrackLogin");
+
+        const dashboard = document.getElementById("mainDashboard");
+        const login = document.getElementById("loginSection");
+        const userInfo = document.getElementById("loggedInUser");
+        const loginForm = document.getElementById("loginForm");
+
+        dashboard.style.display = "none";
+        login.style.display = "flex";
+
+        if (userInfo) {
+            userInfo.remove();
+        }
+
+        loginForm.reset();
+
+        alert("You have successfully logged out!");
+    }
+
+});
+
+        
+
+        document.getElementById("mainDashboard").prepend(userInfo);
+
+    });
+}
+
